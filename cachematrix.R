@@ -1,7 +1,15 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Functions that set up and compute cached inverse value of a matrix.
+## Since inverse computation is an expensive O(n^2) process, inverse should
+## not be computed every time that it is requested.  This module implements
+## an abstract data type (ADT) that computes the inverse only once and returns
+## the computed inverse afterwards.
 
-## Write a short comment describing this function
+## This function sets up a list of methods (functions) which implement
+## the cached Matrix ADT.
+## set: Sets the matrix
+## get: Gets the matrix
+## setInverse: sets the inverse of the matrix
+## getInverse: gets the inverse of the matrix
 
 makeCacheMatrix <- function(m = matrix()) {
   inv <- NULL
@@ -18,7 +26,10 @@ makeCacheMatrix <- function(m = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## This function implements the inverse computation for the cached Matrix
+## abstract data type.
+## If inverse has already been computed, the already computed inverse is 
+## returned.  Otherwise, the inverse is computed, stored and returned.
 
 cacheSolve <- function(x, ...) {
   inv <- x$getInverse()
